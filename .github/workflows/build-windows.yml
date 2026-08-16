@@ -1,0 +1,40 @@
+name: Build Windows exe
+
+on:
+  workflow_dispatch:        # 手动触发：Actions 页面点 "Run workflow"
+  push:
+    paths:
+      - '交易汇总工具/**'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: 交易汇总工具
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pyinstaller openpyxl
+
+      - name: Generate icon
+        run: python make_icon.py
+
+      - name: Build exe
+        run: pyinstaller --noconfirm --clean 交易汇总工具.spec
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: 交易汇总工具-windows
+          path: 交易汇总工具/dist/交易汇总工具.exe
+          if-no-files-found: error

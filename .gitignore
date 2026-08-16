@@ -1,0 +1,22 @@
+# 交易明细数据（敏感业务数据，不推送到公开仓库）
+*.xlsx
+*.xlsm
+*.xls
+
+# Python 缓存与虚拟环境
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# PyInstaller 构建产物
+build/
+dist/
+*.spec.bak
+.pyinstaller_cache/
+build_log.txt
+
+# macOS / 编辑器
+.DS_Store
+.idea/
+.vscode/
