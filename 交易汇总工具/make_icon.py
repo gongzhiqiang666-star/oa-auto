@@ -83,4 +83,5 @@ def make_ico() -> bytes:
 if __name__ == "__main__":
     out = Path(__file__).with_name("交易汇总工具.ico")
     out.write_bytes(make_ico())
-    print("已生成图标：", out, out.stat().st_size, "bytes")
+    # 注意：Windows 控制台默认编码可能不支持中文（如 cp1252），这里只输出 ASCII
+    print("OK: icon written,", out.stat().st_size, "bytes")

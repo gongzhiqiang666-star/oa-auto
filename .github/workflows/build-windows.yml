@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    env:
+      PYTHONIOENCODING: "utf-8"   # 避免 Windows 控制台编码导致中文输出报错
     defaults:
       run:
         working-directory: 交易汇总工具
