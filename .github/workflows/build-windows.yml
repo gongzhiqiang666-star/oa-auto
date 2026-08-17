@@ -16,10 +16,10 @@ jobs:
         working-directory: 交易汇总工具
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
@@ -35,7 +35,7 @@ jobs:
         run: pyinstaller --noconfirm --clean 交易汇总工具.spec
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: 交易汇总工具-windows
           path: 交易汇总工具/dist/交易汇总工具.exe
